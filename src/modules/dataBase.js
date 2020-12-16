@@ -7,7 +7,6 @@ const pool = mysql.createPool(keys);
 pool.getConnection((error,connection) => {
 
     if(connection){
-        console.log('Conexión realizada');
         connection.release();
         return
     }else{

@@ -1,5 +1,5 @@
 const db = require('../modules/dataBase');
-const resource = require('./functions');
+const resource = require('./proccesData');
 
 class Dao{
 

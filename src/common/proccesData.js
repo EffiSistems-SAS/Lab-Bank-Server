@@ -1,13 +1,13 @@
 //Metodos para determinar valores de consultas a la base de datos
 
-function getIdDB(table) {
+const getIdDB = (table) => {
     switch (table) {
         default:
             return 'id';
     }
 }
 
-function getValueText(list) {
+const getValueText = (list) => {
     let values = 'VALUES(';
     for (let i = 0; i < list.length; i++) {
         if (i === (list.length - 1)) {
@@ -20,7 +20,7 @@ function getValueText(list) {
     return values;
 }
 
-function getUpdateText(body) {
+const getUpdateText = (body) => {
     let update = '';
     for (let clave in body) {
         if (body.hasOwnProperty(clave)) {

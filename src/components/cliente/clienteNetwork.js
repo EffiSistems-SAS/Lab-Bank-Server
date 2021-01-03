@@ -1,7 +1,7 @@
 const express = require('express');
 const routerClient = express.Router();
 const Dao = require('../../common/Dao');
-const { succes , error} = require('../../common/response');
+const { succes , error } = require('../../common/response');
 const { createDataMiddleware } = require('../../common/middlewares');
 
 let clientDao = new Dao();
@@ -16,8 +16,8 @@ routerClient.get('/',(request,response) => {
         });
 });
 
-routerClient.get('/view/',(request,response) => {
-    clientDao.get('Cliente',request.body.id)
+routerClient.get('/ver/:id?',(request,response) => {
+    clientDao.get('Cliente',request.query.id)
         .then((res) => {
             succes(request,response,res,200);
         })

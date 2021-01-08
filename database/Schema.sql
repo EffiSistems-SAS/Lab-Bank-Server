@@ -27,7 +27,7 @@ CREATE TABLE Cliente(
 
 CREATE TABLE Cuenta(
 	idCuenta INT NOT NULL,
-	contraseña INT NOT NULL,
+	contraseña VARCHAR(50) NOT NULL,
 	numero INT NOT NULL,
 	saldo DOUBLE(10,2) NOT NULL,
 	idTarjeta INT NOT NULL,
@@ -50,7 +50,7 @@ CREATE TABLE Operacion_Cliente(
 
 CREATE TABLE TarjetaDebito(
 	idTarjeta INT NOT NULL,
-	contraseña INT NOT NULL,
+	contraseña VARCHAR(50) NOT NULL,
 	numero INT NOT NULL,
 	CONSTRAINT PK_TarjetaDebito PRIMARY KEY (idTarjeta ASC)
 );

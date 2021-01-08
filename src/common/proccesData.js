@@ -8,6 +8,8 @@ const getIdDB = (table) => {
             return 'idCuenta';
         case 'Operacion':
             return 'idOperacion';
+        case 'TarjetaDebito':
+            return 'idTarjeta';
         default:
             return 'id';
     }

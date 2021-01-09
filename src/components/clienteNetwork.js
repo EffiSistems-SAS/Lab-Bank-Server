@@ -8,7 +8,11 @@ let clientDao = new Dao();
 routerClient.get('/view/:id?',(request,response) => {
     clientDao.get('Cliente',request.query.id)
         .then((res) => {
-            succes(response,res,200);
+            if(res.length === 1){
+                succes(response,data,200);
+            }else{
+                error(response,'',404);
+            }
         })
         .catch((e) => {
             error(response,e,500);

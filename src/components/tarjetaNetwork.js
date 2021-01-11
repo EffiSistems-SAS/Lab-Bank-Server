@@ -8,6 +8,8 @@ let tarjetaDebitoDao = new Dao();
 routerDebito.get('/view/:id?',(request,response) => {
     tarjetaDebitoDao.get('TarjetaDebito',request.query.id)
         .then((data) => {
+            console.log('XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
+            console.log(data);
             if(data.length === 1){
                 succes(response,data,200);
             }else{

@@ -1,3 +1,4 @@
+const { parseString } = require('./proccesData');
 
 const createDataMiddleware = (req,res,next) => {
     let values = [];
@@ -8,10 +9,23 @@ const createDataMiddleware = (req,res,next) => {
     }
     req.values = values;
     next();
+}
 
+const dataMiddleWare = (req,res,next) => {
+    req.body.idOperacion_Cliente = parseString(`IDOPCLIENT_${Date.now()}`);
+    if(req.body.idCuentaAbonada==='NOACC'){
+        req.body.idCuentaAbonada=null;
+    }
+    if(req.body.Valor==='NOVALUE'){
+        req.body.Valor=null;
+    }else{
+        req.body.Valor=parseInt(req.body.Valor);
+    }
+    next();
 }
 
 
 module.exports = {
-    createDataMiddleware
+    createDataMiddleware,
+    dataMiddleWare
 }

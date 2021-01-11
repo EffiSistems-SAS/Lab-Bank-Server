@@ -1,6 +1,6 @@
-insert into Cliente values (2315481,'Carrera 15 #119a-40','Julian Camilo Espinoza',4158945);
+insert into Cliente values (2315481,'Carrera 15 #119a-40','José Daniel Medina Calvo',4158945);
 insert into Cliente values (1324865,'Calle 19c #50-38','Sergio David Páez Suárez',7254253);
-insert into Cliente values (9874513,'Carrera 87c #23-45','José Daniel Medina Calvo',1574235);
+insert into Cliente values (9874513,'Carrera 87c #23-45','Miguel Ángel Rico García',1574235);
 insert into Cliente values (2138546,'Carrera 5 #60b-12','Raúl Felipe Vega',6574891);
 insert into Cliente values (6485631,'Calle 80 #40-55','Nicolás Hernández Noreña',3548912);
 
@@ -19,4 +19,5 @@ insert into Cuenta values ('ACCID_005','845316',132956421841,5000000,'TRJTID_005
 insert into Operacion values ('OPID_001',501,'ABONO A TERCEROS');
 insert into Operacion values ('OPID_002',601,'RETIRO DE FONDOS');
 insert into Operacion values ('OPID_003',701,'CONSULTA DE SALDO');
-
+insert into Operacion values ('OPID_010',101,'INICIO DE SESIÓN');
+insert into Operacion values ('OPID_011',201,'CIERRE DE SESIÓN');

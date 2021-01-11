@@ -39,8 +39,13 @@ const getUpdateText = (body) => {
 
 }
 
+const parseString = (text) => {
+    return `'${text}'`;
+}
+
 module.exports = {
     getIdDB,
     getValueText,
     getUpdateText,
+    parseString
 }

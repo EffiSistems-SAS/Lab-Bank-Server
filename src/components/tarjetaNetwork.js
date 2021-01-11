@@ -2,14 +2,13 @@ const express = require('express');
 const routerDebito = express.Router();
 const Dao = require('../common/Dao');
 const { succes , error } = require('../common/response');
+const { parseString } = require('../common/proccesData');
 
 let tarjetaDebitoDao = new Dao();
 
 routerDebito.get('/view/:id?',(request,response) => {
-    tarjetaDebitoDao.get('TarjetaDebito',request.query.id)
+    tarjetaDebitoDao.get('TarjetaDebito',parseString(request.query.id))
         .then((data) => {
-            console.log('XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD');
-            console.log(data);
             if(data.length === 1){
                 succes(response,data,200);
             }else{

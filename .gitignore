@@ -1,2 +1,7 @@
 node_modules
+<<<<<<< HEAD
 src/private
+=======
+private
+database/*.ldb
+>>>>>>> development

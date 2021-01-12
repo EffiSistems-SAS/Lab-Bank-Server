@@ -15,6 +15,7 @@ routerClient.get('/view/:id?',(request,response) => {
             }
         })
         .catch((e) => {
+            console.log(e);
             error(response,e,500);
         });
 });

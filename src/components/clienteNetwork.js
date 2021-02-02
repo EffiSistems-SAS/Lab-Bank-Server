@@ -9,13 +9,13 @@ routerClient.get('/view/:id?',(request,response) => {
     clientDao.get('Cliente',request.query.id)
         .then((res) => {
             if(res.length === 1){
-                succes(response,data,200);
+                succes(response,res,200);
             }else{
                 error(response,'',404);
             }
         })
         .catch((e) => {
-            error(response,e,500);
+            error(response,e,404);
         });
 });
 

@@ -1,4 +1,5 @@
 const { parseString } = require('./proccesData');
+const Dao = require('../common/Dao');
 
 const createDataMiddleware = (req,res,next) => {
     let values = [];
@@ -24,8 +25,27 @@ const dataMiddleWare = (req,res,next) => {
     next();
 }
 
+const accountMiddleWare = (req,res,next) => {
+    let value = (parseInt(req.params['value'])+parseInt(req.newvalue));
+    let cuentaDebito = {"montoRetiradoPorDia":value};
+    req.body = cuentaDebito;
+    next();
+}
+
+const getAccount = (req,res,next) => {
+    let newDao = new Dao();
+    newDao.get('Cuenta',parseString(req.params['id']))
+    .then((data)=>{
+        req.newvalue = data[0].montoRetiradoPorDia;
+        next();
+    }).catch((err)=>{
+
+    });
+}
 
 module.exports = {
     createDataMiddleware,
-    dataMiddleWare
+    dataMiddleWare,
+    accountMiddleWare,
+    getAccount
 }

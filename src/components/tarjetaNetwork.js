@@ -19,5 +19,13 @@ routerDebito.get('/view/:id?',(request,response) => {
         });
 });
 
+routerDebito.put('/wrong-access/:id?',(request,response) => {
+    tarjetaDebitoDao.update('TarjetaDebito',request.body,parseString(request.query.id))
+    .then((data)=>{
+        succes(response,data,200);
+    }).catch((err)=>{
+        error(response,'',404);
+    });
+});
 
 module.exports = routerDebito;

@@ -3,6 +3,7 @@ const routerAccount = express.Router();
 const Dao = require('../common/Dao');
 const { succes , error } = require('../common/response');
 const { parseString } = require('../common/proccesData');
+const { accountMiddleWare, getAccount } = require('../common/middlewares');
 
 let accountDao = new Dao();
 
@@ -23,9 +24,14 @@ routerAccount.get('/view/:id?',(request,response) => {
 routerAccount.get('/getNumCuenta/:id?',(request,response) => {
     accountDao.sendRequest(`SELECT * FROM Cuenta WHERE numero=${request.query.id}`)
         .then((data) => {
-            succes(response,data,200);
+            if(data.length===0){
+                error(response,'',404);
+            }else{
+                succes(response,data,200);
+            }
         })
         .catch((err) => {
+            console.log(err);
             error(response,err,404);
         });
 });
@@ -55,6 +61,15 @@ routerAccount.put('/abonoCuenta/:id?',(request,response) => {
         }).catch((err) => {
             error(response,err,503);
         });
+});
+
+routerAccount.put('/MontoDiarioAum/:id/:value',getAccount,accountMiddleWare,(request,response)=>{
+    accountDao.update('Cuenta',request.body,parseString(request.params['id']))
+    .then((data) => {
+        succes(response,data,202);
+    }).catch((err) => {
+        error(response,err,503);
+    });
 });
 
 module.exports = routerAccount;

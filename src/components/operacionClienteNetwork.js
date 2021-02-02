@@ -2,11 +2,11 @@ const express = require('express');
 const routerRelation = express.Router();
 const Dao = require('../common/Dao');
 const { succes , error } = require('../common/response');
-const { createDataMiddleware } = require('../common/middlewares');
+const { createDataMiddleware, dataMiddleWare } = require('../common/middlewares');
 
 let routerDao = new Dao();
 
-routerRelation.post('/create',createDataMiddleware,(request,response) => {
+routerRelation.post('/create',dataMiddleWare,createDataMiddleware,(request,response) => {
     routerDao.create('Operacion_Cliente',request.values)
         .then((data) => {
             succes(response,data,201);

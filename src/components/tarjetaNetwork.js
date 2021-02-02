@@ -2,11 +2,12 @@ const express = require('express');
 const routerDebito = express.Router();
 const Dao = require('../common/Dao');
 const { succes , error } = require('../common/response');
+const { parseString } = require('../common/proccesData');
 
 let tarjetaDebitoDao = new Dao();
 
 routerDebito.get('/view/:id?',(request,response) => {
-    tarjetaDebitoDao.get('TarjetaDebito',request.query.id)
+    tarjetaDebitoDao.get('TarjetaDebito',parseString(request.query.id))
         .then((data) => {
             if(data.length === 1){
                 succes(response,data,200);
@@ -18,5 +19,13 @@ routerDebito.get('/view/:id?',(request,response) => {
         });
 });
 
+routerDebito.put('/wrong-access/:id?',(request,response) => {
+    tarjetaDebitoDao.update('TarjetaDebito',request.body,parseString(request.query.id))
+    .then((data)=>{
+        succes(response,data,200);
+    }).catch((err)=>{
+        error(response,'',404);
+    });
+});
 
 module.exports = routerDebito;
